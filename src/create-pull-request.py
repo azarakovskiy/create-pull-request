@@ -65,7 +65,10 @@ def checkout_branch(git, remote_exists, branch):
 
 def push_changes(git, token, github_repository, branch, commit_message):
     git.add("-A")
-    git.commit(message=commit_message, author_name=author_name, author_email=author_email, committer_name=committer_name,
+    print("author_name=%s, author_email=%s, committer_name=%s, committer_email=%s" % (
+        author_name, author_email, committer_name, committer_email))
+    git.commit(message=commit_message, author_name=author_name, author_email=author_email,
+               committer_name=committer_name,
                committer_email=committer_email)
     repo_url = get_repo_url(token, github_repository)
     return git.push("-f", repo_url, f"HEAD:refs/heads/{branch}")
