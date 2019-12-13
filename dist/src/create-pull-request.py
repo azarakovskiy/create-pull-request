@@ -67,7 +67,7 @@ def push_changes(git, token, github_repository, branch, commit_message):
     git.add("-A")
     print("author_name=%s, author_email=%s, committer_name=%s, committer_email=%s" % (
         author_name, author_email, committer_name, committer_email))
-    git.commit(message=commit_message, author_name=author_name, author_email=author_email,
+    git.commit(m=commit_message, author="%s <%s>" %(author_name, author_email),
                committer_name=committer_name,
                committer_email=committer_email)
     repo_url = get_repo_url(token, github_repository)
@@ -246,6 +246,8 @@ repo.git.update_environment(
     GIT_COMMITTER_NAME=committer_name,
     GIT_COMMITTER_EMAIL=committer_email,
 )
+print("debug")
+print(repo.git.environment())
 
 # Fetch/Set the branch name
 branch_prefix = os.getenv("PULL_REQUEST_BRANCH", "create-pull-request/patch")
