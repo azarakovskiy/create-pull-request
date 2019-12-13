@@ -135,7 +135,7 @@ def process_event(github_token, github_repository, repo, branch, base):
     project_column_name = os.environ.get("PROJECT_COLUMN_NAME")
 
     # Push the local changes to the remote branch
-    print("Pushing changes to 'origin/%s'" % branch)
+    print("Pushing AAA changes to 'origin/%s'" % branch)
     push_result = push_changes(
         repo.git, github_token, github_repository, branch, commit_message
     )
